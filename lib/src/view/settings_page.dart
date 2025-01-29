@@ -29,9 +29,7 @@ class _SettingsPageState extends State<SettingsPage> {
     return Directionality(
       textDirection: Localization.textDirection,
       child: Scaffold(
-        appBar: ChuckerAppBar(
-          onBackPressed: () => context.navigator.pop(),
-        ),
+        appBar: AppBar(),
         body: SingleChildScrollView(
           padding: const EdgeInsets.all(16),
           child: Column(

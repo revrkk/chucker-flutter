@@ -99,7 +99,6 @@ class _ChuckerPageState extends State<ChuckerPage> {
             ),
             const SizedBox(height: 16),
             Material(
-              color: primaryColor,
               child: TabBar(
                 tabs: _tabsHeadings
                     .map(

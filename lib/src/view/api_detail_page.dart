@@ -34,8 +34,7 @@ class _ApiDetailsPageState extends State<ApiDetailsPage> {
     return Directionality(
       textDirection: Localization.textDirection,
       child: Scaffold(
-        appBar: ChuckerAppBar(
-          onBackPressed: () => context.navigator.pop(),
+        appBar: AppBar(
           actions: [
             IconButton(
               onPressed: () {
@@ -76,7 +75,6 @@ class _ApiDetailsPageState extends State<ApiDetailsPage> {
             child: Column(
               children: [
                 Material(
-                  color: primaryColor,
                   child: TabBar(
                     labelColor: Colors.white,
                     unselectedLabelColor: Colors.white.withValues(alpha: 0.8),

@@ -28,13 +28,7 @@ class _ChuckerAppBarState extends State<ChuckerAppBar> {
   @override
   Widget build(BuildContext _) {
     return AppBar(
-      title: Text(
-        'HTTP Logger',
-        style: Theme.of(context)
-            .textTheme
-            .headlineSmall!
-            .copyWith(color: Colors.white),
-      ),
+      title: const Text('HTTP Logger'),
       leading: IconButton(
         key: const ValueKey('chucker_back_button'),
         icon: const Icon(Icons.arrow_back),
