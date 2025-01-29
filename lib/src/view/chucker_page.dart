@@ -3,7 +3,6 @@ import 'package:chucker_flutter/src/localization/localization.dart';
 import 'package:chucker_flutter/src/models/api_response.dart';
 import 'package:chucker_flutter/src/view/api_detail_page.dart';
 import 'package:chucker_flutter/src/view/helper/chucker_ui_helper.dart';
-import 'package:chucker_flutter/src/view/helper/colors.dart';
 import 'package:chucker_flutter/src/view/helper/http_methods.dart';
 import 'package:chucker_flutter/src/view/settings_page.dart';
 import 'package:chucker_flutter/src/view/tabs/apis_listing.dart';
@@ -60,19 +59,12 @@ class _ChuckerPageState extends State<ChuckerPage> {
       appBar: ChuckerAppBar(
         onBackPressed: () => ChuckerFlutter.navigatorObserver.navigator?.pop(),
         actions: [
-          Theme(
-            data: ThemeData(
-              checkboxTheme: const CheckboxThemeData(
-                side: BorderSide(color: Colors.white),
-              ),
-            ),
-            child: Checkbox(
-              tristate: true,
-              value: _selectAllCheckState(),
-              onChanged: (checked) {
-                _selectDeselectAll(checked ?? false);
-              },
-            ),
+          Checkbox(
+            tristate: true,
+            value: _selectAllCheckState(),
+            onChanged: (checked) {
+              _selectDeselectAll(checked ?? false);
+            },
           ),
           MenuButtons(
             enableDelete: _selectedApis.isNotEmpty,
@@ -259,10 +251,7 @@ class _ChuckerPageState extends State<ChuckerPage> {
   void _openSettings() {
     ChuckerFlutter.navigatorObserver.navigator?.push(
       MaterialPageRoute<void>(
-        builder: (_) => Theme(
-          data: ThemeData.light(useMaterial3: false),
-          child: const SettingsPage(),
-        ),
+        builder: (_) => const SettingsPage(),
       ),
     );
   }
@@ -270,10 +259,7 @@ class _ChuckerPageState extends State<ChuckerPage> {
   void _openDetails(ApiResponse api) {
     ChuckerFlutter.navigatorObserver.navigator?.push(
       MaterialPageRoute<void>(
-        builder: (_) => Theme(
-          data: ThemeData.light(useMaterial3: false),
-          child: ApiDetailsPage(api: api),
-        ),
+        builder: (_) => ApiDetailsPage(api: api),
       ),
     );
   }

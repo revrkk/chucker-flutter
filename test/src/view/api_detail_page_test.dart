@@ -2,7 +2,6 @@ import 'package:chucker_flutter/chucker_flutter.dart';
 import 'package:chucker_flutter/src/helpers/shared_preferences_manager.dart';
 import 'package:chucker_flutter/src/models/api_response.dart';
 import 'package:chucker_flutter/src/view/api_detail_page.dart';
-import 'package:chucker_flutter/src/view/chucker_page.dart';
 import 'package:chucker_flutter/src/view/json_tree/json_tree.dart';
 import 'package:chucker_flutter/src/view/widgets/sizeable_text_button.dart';
 import 'package:flutter/material.dart';

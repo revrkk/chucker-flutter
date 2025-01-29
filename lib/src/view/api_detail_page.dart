@@ -5,7 +5,6 @@ import 'package:chucker_flutter/src/models/api_response.dart';
 import 'package:chucker_flutter/src/view/helper/colors.dart';
 import 'package:chucker_flutter/src/view/json_tree/json_tree.dart';
 import 'package:chucker_flutter/src/view/tabs/overview.dart';
-import 'package:chucker_flutter/src/view/widgets/app_bar.dart';
 import 'package:chucker_flutter/src/view/widgets/sizeable_text_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -62,10 +61,7 @@ class _ApiDetailsPageState extends State<ApiDetailsPage> {
                   ClipboardData(text: widget.api.toCurl()),
                 );
               },
-              child: const Text(
-                'Copy cURL Command',
-                style: TextStyle(color: Colors.white),
-              ),
+              child: const Text('Copy cURL Command'),
             ),
           ],
         ),
@@ -76,8 +72,6 @@ class _ApiDetailsPageState extends State<ApiDetailsPage> {
               children: [
                 Material(
                   child: TabBar(
-                    labelColor: Colors.white,
-                    unselectedLabelColor: Colors.white.withValues(alpha: 0.8),
                     tabs: [
                       Tab(text: Localization.strings['overview']),
                       Tab(text: Localization.strings['request']),
