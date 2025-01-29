@@ -28,9 +28,8 @@ class _ChuckerAppBarState extends State<ChuckerAppBar> {
   @override
   Widget build(BuildContext _) {
     return AppBar(
-      backgroundColor: primaryColor,
       title: Text(
-        'Chucker Flutter',
+        'HTTP Logger',
         style: Theme.of(context)
             .textTheme
             .headlineSmall!
