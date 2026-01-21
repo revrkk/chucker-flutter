@@ -78,18 +78,6 @@ class ApisListingItemWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 8),
-                  Visibility(
-                    visible: showDelete,
-                    child: TextButton(
-                      onPressed: () => onDelete(dateTime.toString()),
-                      child: Text(
-                        Localization.strings['delete']!,
-                        style:
-                            context.textTheme.bodySmall!.withColor(Colors.red),
-                      ),
-                    ),
-                  ),
                 ],
               ),
             ),
@@ -114,6 +102,17 @@ class ApisListingItemWidget extends StatelessWidget {
                         value: checked,
                         activeColor: Colors.green,
                         onChanged: (_) => onChecked(dateTime.toString()),
+                      ),
+                      const SizedBox(height: 8),
+                      Visibility(
+                        visible: showDelete,
+                        child: IconButton(
+                          onPressed: () => onDelete(dateTime.toString()),
+                          icon: Icon(
+                            Icons.delete_outline,
+                            color: Colors.red,
+                          ),
+                        ),
                       ),
                     ],
                   ),

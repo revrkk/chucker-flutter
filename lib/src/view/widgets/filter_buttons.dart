@@ -63,16 +63,9 @@ class _FilterButtonsState extends State<FilterButtons> {
             ),
           ),
           const SizedBox(width: 8),
-          SizedBox(
-            width: 128,
-            height: 48,
-            child: PrimaryButton(
-              text: !_openSearch
-                  ? Localization.strings['showSearch']!
-                  : Localization.strings['hideSearch']!,
-              onPressed: () => setState(() => _openSearch = !_openSearch),
-              foreColor: Colors.white,
-            ),
+          IconButton(
+            icon: !_openSearch ? Icon(Icons.search) : Icon(Icons.cancel),
+            onPressed: () => setState(() => _openSearch = !_openSearch),
           ),
         ],
       ),
