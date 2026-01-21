@@ -111,16 +111,6 @@ ChuckerFlutter: You programmatically vetoed notification behavior. Make sure to 
           localizationsDelegates: Localization.localizationsDelegates,
           supportedLocales: Localization.supportedLocales,
           locale: Localization.currentLocale,
-          theme: ThemeData(
-            useMaterial3: false,
-            tabBarTheme: TabBarThemeData(
-              labelColor: Colors.white,
-              labelStyle: context.textTheme.bodyLarge,
-            ),
-            colorScheme: Theme.of(context).colorScheme.copyWith(
-                  surface: primaryColor,
-                ),
-          ),
           home: const ChuckerPage(),
         ),
       ),
