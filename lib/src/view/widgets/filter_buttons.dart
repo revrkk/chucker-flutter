@@ -63,8 +63,8 @@ class _FilterButtonsState extends State<FilterButtons> {
             ),
           ),
           const SizedBox(width: 8),
-          IconButton(
-            icon: !_openSearch ? Icon(Icons.search) : Icon(Icons.cancel),
+          IconButton.filled(
+            icon: !_openSearch ? Icon(Icons.search) : Icon(Icons.clear),
             onPressed: () => setState(() => _openSearch = !_openSearch),
           ),
         ],

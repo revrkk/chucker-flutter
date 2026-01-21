@@ -98,21 +98,21 @@ class ApisListingItemWidget extends StatelessWidget {
                         ),
                       ),
                       const Expanded(child: SizedBox.shrink()),
-                      Checkbox(
-                        value: checked,
-                        activeColor: Colors.green,
-                        onChanged: (_) => onChecked(dateTime.toString()),
-                      ),
-                      const SizedBox(height: 8),
                       Visibility(
                         visible: showDelete,
                         child: IconButton(
                           onPressed: () => onDelete(dateTime.toString()),
                           icon: Icon(
-                            Icons.delete_outline,
+                            Icons.delete,
                             color: Colors.red,
                           ),
                         ),
+                      ),
+                      const SizedBox(height: 8),
+                      Checkbox(
+                        value: checked,
+                        activeColor: Colors.green,
+                        onChanged: (_) => onChecked(dateTime.toString()),
                       ),
                     ],
                   ),
