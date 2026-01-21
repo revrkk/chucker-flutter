@@ -38,7 +38,9 @@ class SizeableTextButton extends StatelessWidget {
         onPressed: onPressed,
         child: Text(
           text,
-          style: style ?? context.textTheme.bodySmall!.withColor(primaryColor),
+          style: style ??
+              context.textTheme.bodySmall!
+                  .withColor(Theme.of(context).colorScheme.primary),
         ),
       ),
     );

@@ -40,7 +40,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 title: Localization.strings['show']!,
                 description: Localization.strings['notificationSettingDesc']!,
                 child: Switch.adaptive(
-                  activeColor: primaryColor,
+                  activeColor: Theme.of(context).colorScheme.primary,
                   value: _settings.showNotification,
                   onChanged: (value) {
                     _saveSettings(showNotification: value);
@@ -57,7 +57,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   min: 2,
                   max: 10,
                   divisions: 9,
-                  activeColor: primaryColor,
+                  activeColor: Theme.of(context).colorScheme.primary,
                   label: _settings.duration.inSeconds.toString(),
                   value: _settings.duration.inSeconds.toDouble(),
                   onChanged: (value) {
@@ -101,7 +101,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 title: Localization.strings['showRequestStats']!,
                 description: Localization.strings['showRequestStatsDesc']!,
                 child: Switch.adaptive(
-                  activeColor: primaryColor,
+                  activeColor: Theme.of(context).colorScheme.primary,
                   value: _settings.showRequestsStats,
                   onChanged: (value) {
                     _saveSettings(showRequestsStats: value);
@@ -124,7 +124,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   min: 100,
                   max: 1000,
                   divisions: 90,
-                  activeColor: primaryColor,
+                  activeColor: Theme.of(context).colorScheme.primary,
                   label: _settings.apiThresholds.toString(),
                   value: _settings.apiThresholds.toDouble(),
                   onChanged: (value) {
@@ -142,7 +142,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 title: Localization.strings['showConfirmDialog']!,
                 description: Localization.strings['showDialogDesc']!,
                 child: Switch.adaptive(
-                  activeColor: primaryColor,
+                  activeColor: Theme.of(context).colorScheme.primary,
                   value: _settings.showDeleteConfirmDialog,
                   onChanged: (value) {
                     _saveSettings(showDeleteConfirmDialog: value);
@@ -309,9 +309,9 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget _heading(String heading) {
     return Text(
       heading,
-      style: context.textTheme.titleLarge!.toBold().withColor(
-            primaryColor,
-          ),
+      style: context.textTheme.titleLarge!
+          .toBold()
+          .withColor(Theme.of(context).colorScheme.primary),
     );
   }
 }

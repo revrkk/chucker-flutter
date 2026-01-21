@@ -64,7 +64,9 @@ class _FilterButtonsState extends State<FilterButtons> {
           ),
           const SizedBox(width: 8),
           IconButton.filled(
-            icon: !_openSearch ? Icon(Icons.search) : Icon(Icons.clear),
+            icon: !_openSearch
+                ? const Icon(Icons.search)
+                : const Icon(Icons.clear),
             onPressed: () => setState(() => _openSearch = !_openSearch),
           ),
         ],
@@ -106,17 +108,18 @@ class _SearchField extends StatelessWidget {
         ..selection = TextSelection.fromPosition(
           TextPosition(offset: query.length),
         ),
-      decoration: const InputDecoration(
-        contentPadding: EdgeInsets.symmetric(horizontal: 8),
+      decoration: InputDecoration(
+        contentPadding: const EdgeInsets.symmetric(horizontal: 8),
         border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(24),
           borderSide: BorderSide(
-            color: primaryColor,
+            color: Theme.of(context).colorScheme.primary,
             width: 2,
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(
-            color: primaryColor,
+            color: Theme.of(context).colorScheme.primary,
             width: 2,
           ),
         ),

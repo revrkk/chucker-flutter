@@ -88,7 +88,8 @@ class _JsonValueState extends State<_JsonValue> {
             visible: widget.value.toString().isImageUrl(),
             child: IconButton(
               splashRadius: 16,
-              icon: const Icon(Icons.preview_rounded, color: primaryColor),
+              icon: Icon(Icons.preview_rounded,
+                  color: Theme.of(context).colorScheme.primary),
               onPressed: () {
                 showDialog<bool>(
                   context: context,
@@ -108,7 +109,9 @@ class _JsonValueState extends State<_JsonValue> {
               child: AnimatedSwitcher(
                 duration: const Duration(milliseconds: 300),
                 child: _copied
-                    ? const Center(child: Icon(Icons.done, color: primaryColor))
+                    ? Center(
+                        child: Icon(Icons.done,
+                            color: Theme.of(context).colorScheme.primary))
                     : SizeableTextButton(
                         height: 34,
                         onPressed: () async {

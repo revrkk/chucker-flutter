@@ -27,7 +27,7 @@ class _LanguagesMenuState extends State<LanguagesMenu> {
     return PopupMenuButton(
       child: Container(
         decoration: BoxDecoration(
-          border: Border.all(color: primaryColor),
+          border: Border.all(color: Theme.of(context).colorScheme.primary),
           borderRadius: BorderRadius.circular(8),
         ),
         padding: const EdgeInsets.all(16),

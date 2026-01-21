@@ -11,6 +11,7 @@ class ApisListingItemWidget extends StatelessWidget {
   ///[ApisListingItemWidget] renders the [ApiResponse] items in
   ///1ApisListingTabView`
   const ApisListingItemWidget({
+    required this.index,
     required this.baseUrl,
     required this.dateTime,
     required this.method,
@@ -26,6 +27,8 @@ class ApisListingItemWidget extends StatelessWidget {
 
   ///base url of api request such as `https://www.api.com`
   final String baseUrl;
+
+  final int index;
 
   ///request path such as `/users`
   final String path;
@@ -59,73 +62,71 @@ class ApisListingItemWidget extends StatelessWidget {
     return InkWell(
       key: const ValueKey('api_listing_item_widget'),
       onTap: onPressed,
+      onLongPress: () {
+        onChecked(dateTime.toString());
+      },
       child: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(12),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
-              width: 68,
-              child: Column(
-                children: [
-                  Chip(
-                    backgroundColor: statusColor(statusCode),
-                    label: Text(
-                      statusCode.toString(),
-                      textAlign: TextAlign.center,
-                      style: context.textTheme.bodySmall!.withColor(
-                        Colors.white,
-                      ),
-                    ),
-                  ),
-                ],
+            CircleAvatar(
+              radius: 14,
+              backgroundColor: Theme.of(context).colorScheme.primary,
+              child: Text(
+                '${index + 1}',
+                style: const TextStyle(color: Colors.white),
               ),
             ),
-            const SizedBox(width: 16),
+            const SizedBox(width: 8),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Chip(
-                        backgroundColor: methodColor(method),
-                        label: Text(
-                          method,
+                      Container(
+                        padding: const EdgeInsets.all(2),
+                        decoration: BoxDecoration(
+                          color: statusColor(statusCode),
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                        child: Text(
+                          statusCode.toString(),
+                          textAlign: TextAlign.center,
                           style: context.textTheme.bodySmall!
                               .toBold()
                               .withColor(Colors.white),
                         ),
                       ),
-                      const Expanded(child: SizedBox.shrink()),
-                      Visibility(
-                        visible: showDelete,
-                        child: IconButton(
-                          onPressed: () => onDelete(dateTime.toString()),
-                          icon: Icon(
-                            Icons.delete,
-                            color: Colors.red,
-                          ),
-                        ),
+                      const SizedBox(
+                        width: 8,
                       ),
-                      const SizedBox(height: 8),
-                      Checkbox(
-                        value: checked,
-                        activeColor: Colors.green,
-                        onChanged: (_) => onChecked(dateTime.toString()),
+                      Text(
+                        method,
+                        style: context.textTheme.bodySmall!
+                            .toBold()
+                            .withColor(methodColor(method))
+                            .withSize(14),
+                      ),
+                      const SizedBox(width: 8),
+                      Expanded(
+                        child: Text(
+                          path,
+                          style: context.textTheme.bodySmall!
+                              .toBold()
+                              .withSize(14),
+                        ),
                       ),
                     ],
                   ),
-                  Text(
-                    path,
-                    style: context.textTheme.bodySmall!.toBold(),
-                  ),
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 4),
                   Text(
                     baseUrl.isEmpty ? Localization.strings['nA']! : baseUrl,
                     style: context.textTheme.bodySmall!.withColor(Colors.grey),
                   ),
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 2),
                   Text(
                     dateTime.toString(),
                     style: context.textTheme.bodySmall!.withColor(Colors.grey),
@@ -133,6 +134,25 @@ class ApisListingItemWidget extends StatelessWidget {
                 ],
               ),
             ),
+            Visibility(
+              visible: showDelete,
+              child: IconButton.filledTonal(
+                onPressed: () => onDelete(dateTime.toString()),
+                icon: const Icon(
+                  Icons.clear,
+                  color: Colors.red,
+                ),
+              ),
+            ),
+            if (checked)
+              CircleAvatar(
+                backgroundColor: Theme.of(context).colorScheme.primary,
+                child: Checkbox(
+                  side: BorderSide.none,
+                  value: checked,
+                  onChanged: (_) => onChecked(dateTime.toString()),
+                ),
+              ),
           ],
         ),
       ),

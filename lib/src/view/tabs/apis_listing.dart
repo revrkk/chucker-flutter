@@ -46,6 +46,7 @@ class _ApisListingTabViewState extends State<ApisListingTabView> {
       itemBuilder: (_, i) {
         final api = widget.apis[i];
         return ApisListingItemWidget(
+          index: i,
           baseUrl: api.baseUrl,
           dateTime: api.requestTime,
           method: api.method,
@@ -58,7 +59,7 @@ class _ApisListingTabViewState extends State<ApisListingTabView> {
           onPressed: () => widget.onItemPressed(api),
         );
       },
-      separatorBuilder: (_, __) => const Divider(),
+      separatorBuilder: (_, __) => Container(),
       itemCount: widget.apis.length,
     );
   }

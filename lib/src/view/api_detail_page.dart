@@ -159,7 +159,7 @@ class _PreviewModeControl extends StatelessWidget {
                 Localization.strings['jsonPreviewMode']!,
                 style: context.textTheme.bodyMedium!
                     .toBold()
-                    .withColor(primaryColor),
+                    .withColor(Theme.of(context).colorScheme.primary),
               ),
               SizeableTextButton(
                 onPressed: onPreviewPressed,
@@ -178,9 +178,10 @@ class _PreviewModeControl extends StatelessWidget {
             key: const ValueKey('api_detail_copy'),
             onTap: onCopyPressed,
             borderRadius: BorderRadius.circular(24),
-            child: const Padding(
+            child: Padding(
               padding: EdgeInsets.all(8),
-              child: Icon(Icons.copy, color: primaryColor),
+              child: Icon(Icons.copy,
+                  color: Theme.of(context).colorScheme.primary),
             ),
           ),
         ),

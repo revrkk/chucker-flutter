@@ -30,12 +30,12 @@ class _ChuckerPageState extends State<ChuckerPage> {
 
   final _tabsHeadings = [
     _TabModel(
-      label: Localization.strings['successRequestsWithSpace']!,
+      label: 'SUCCESS',
       icon: const Icon(Icons.check_circle, color: Colors.white),
       index: 0,
     ),
     _TabModel(
-      label: Localization.strings['failedRequestsWithSpace']!,
+      label: 'FAILURE',
       icon: const Icon(Icons.error, color: Colors.white),
       index: 1,
     ),
@@ -59,18 +59,34 @@ class _ChuckerPageState extends State<ChuckerPage> {
       appBar: ChuckerAppBar(
         onBackPressed: () => ChuckerFlutter.navigatorObserver.navigator?.pop(),
         actions: [
-          Checkbox(
-            tristate: true,
-            value: _selectAllCheckState(),
-            onChanged: (checked) {
-              _selectDeselectAll(checked ?? false);
-            },
+          if (_apis.isNotEmpty)
+            Checkbox(
+              tristate: true,
+              value: _selectAllCheckState(),
+              onChanged: (checked) {
+                _selectDeselectAll(checked ?? false);
+              },
+            ),
+          if (_selectedApis.isNotEmpty)
+            IconButton(
+              onPressed: _deleteAllSelected,
+              icon: const Icon(
+                Icons.delete_forever,
+                color: Colors.red,
+              ),
+            ),
+          IconButton(
+            onPressed: _openSettings,
+            icon: Icon(
+              Icons.settings,
+              color: Theme.of(context).colorScheme.primary,
+            ),
           ),
-          MenuButtons(
-            enableDelete: _selectedApis.isNotEmpty,
-            onDelete: _deleteAllSelected,
-            onSettings: _openSettings,
-          ),
+          // MenuButtons(
+          //   enableDelete: _selectedApis.isNotEmpty,
+          //   onDelete: _deleteAllSelected,
+          //   onSettings: _openSettings,
+          // ),
         ],
       ),
       body: DefaultTabController(
@@ -78,7 +94,6 @@ class _ChuckerPageState extends State<ChuckerPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const SizedBox(height: 16),
             FilterButtons(
               onFilter: (httpMethod) {
                 setState(() => _httpMethod = httpMethod);
@@ -89,7 +104,6 @@ class _ChuckerPageState extends State<ChuckerPage> {
               httpMethod: _httpMethod,
               query: _query,
             ),
-            const SizedBox(height: 16),
             Material(
               child: TabBar(
                 tabs: _tabsHeadings
